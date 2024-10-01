@@ -1,25 +1,37 @@
 /* src/styles/Contact.module.css */
 
-.contact {
-  text-align: left;
-}
-
-#h2 {
-  font-size: 1.8rem;
+.contactItem {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start; /* 左揃えにする */
+  margin-bottom: 1rem;
   color: #444;
 }
 
-#p {
-  font-size: 1rem;
-  color: #555;
+
+.email {
+  margin-left: 0.5rem;
+  font-size: 1.1rem;
+  align-items: center;
 }
 
 .link {
-  color: #1a73e8;
+  display: inline-flex;
+  align-items: center;
   text-decoration: none;
-  font-weight: bold;
+  color: #444;
 }
 
 .link:hover {
-  text-decoration: underline;
+  color: #333;
+}
+
+.icon {
+  margin-right: 0.5rem;
+  font-size: 1.5rem;
+  transition: transform 0.3s ease;
+}
+
+.link:hover .icon {
+  transform: scale(1.2);
 }

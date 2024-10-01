@@ -1,4 +1,5 @@
 import Image from "next/image";
+
 import styles from "../styles/About.module.css";
 
 const About = () => {
@@ -13,7 +14,7 @@ const About = () => {
           alt="profile"
         />
         <div className={styles.aboutText}>
-          <h1>About Me</h1>
+          <h2>About Me</h2>
           <p>初めまして。岩橋七海と申します。</p>
         </div>
       </div>

@@ -25,4 +25,24 @@ body {
       color: var(--main-color);
     }
   }
+
+  h1 {
+    font-size: 2rem;
+    color: #333;
+  }
+
+  h2 {
+    font-size: 1.8rem;
+    color: #444;
+  }
+
+  h3 {
+    font-size: 1.4rem;
+    color: #555;
+  }
+
+  p {
+    font-size: 1rem;
+    color: #555;
+  }
 }

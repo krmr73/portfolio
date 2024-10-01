@@ -14,19 +14,8 @@
 
 .profileImage {
   border-radius: 50%;
-
 }
 
 .aboutText {
   text-align: left;
-}
-
-#h1 {
-  font-size: 2rem;
-  color: #333;
-}
-
-#p {
-  font-size: 1.1rem;
-  color: #555;
 }
