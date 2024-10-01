@@ -18,9 +18,9 @@ body {
 
   a {
     color: var(--text-color);
-    letter-spacing: .15em;
+    letter-spacing: 0.15em;
     font-weight: 500;
-    transition: color .5s;
+    transition: color 0.5s;
     &:hover {
       color: var(--main-color);
     }

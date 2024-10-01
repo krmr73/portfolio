@@ -1,0 +1,32 @@
+/* src/styles/About.module.css */
+
+.about {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.profileContainer {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.profileImage {
+  border-radius: 50%;
+
+}
+
+.aboutText {
+  text-align: left;
+}
+
+#h1 {
+  font-size: 2rem;
+  color: #333;
+}
+
+#p {
+  font-size: 1.1rem;
+  color: #555;
+}
