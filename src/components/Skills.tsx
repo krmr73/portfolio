@@ -1,5 +1,4 @@
 import styles from "../styles/Skills.module.css";
-// import styles from "../styles/global.scss";
 
 const skillCategories = [
   {
@@ -43,6 +42,11 @@ const skillCategories = [
   },
 ];
 
+const qualifications = [
+  { name: "基本情報技術者(FE)" },
+  { name: "応用情報技術者(AP)" },
+];
+
 const Skills = () => {
   return (
     <section className={styles.skillsSection}>
@@ -64,6 +68,17 @@ const Skills = () => {
           </div>
         </div>
       ))}
+
+      <div className={styles.skillCategory}>
+        <h3>Qualifications</h3>
+        <div className={styles.skillsContainer}>
+          {qualifications.map((qualification, index) => (
+            <div key={index} className={styles.skill}>
+              <span className={styles.skillName}>{qualification.name}</span>
+            </div>
+          ))}
+        </div>
+      </div>
     </section>
   );
 };
