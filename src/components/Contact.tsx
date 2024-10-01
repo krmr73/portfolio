@@ -1,5 +1,5 @@
-import { FaGithub } from "react-icons/fa"; // GitHub アイコンをインポート
 import { AiOutlineMail } from "react-icons/ai"; // メールアイコンをインポート
+import { FaGithub } from "react-icons/fa"; // GitHub アイコンをインポート
 
 import styles from "../styles/Contact.module.css";
 
@@ -20,7 +20,7 @@ const Contact = () => {
           rel="noopener noreferrer"
         >
           <FaGithub className={styles.icon} />
-          GitHub
+          <p>GitHub</p>
         </a>
       </div>
     </section>
