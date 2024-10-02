@@ -46,7 +46,7 @@ const Contact = () => {
       <h2>Contact</h2>
       <div className={styles.contactItem}>
         <AiOutlineMail className={styles.icon} />
-        <p className={styles.email}>n.iwahashi2213544@gmail.com</p>
+        <p className={styles.text}>n.iwahashi2213544@gmail.com</p>
       </div>
 
       <div className={styles.contactItem}>
@@ -57,7 +57,7 @@ const Contact = () => {
           rel="noopener noreferrer"
         >
           <FaGithub className={styles.icon} />
-          <p>krmr73</p>
+          <p className={styles.text}>krmr73</p>
         </a>
       </div>
 
@@ -66,7 +66,7 @@ const Contact = () => {
         <h3>Share Your Thoughts</h3>
         <p className={styles.description}>
           このポートフォリオに関するご意見やアドバイス等、いただけるとありがたいです。
-          （例：もっと知りたい情報・あったらいい機能・見にくい箇所など）
+          （例：もっと知りたい情報・あったらいい機能・見やすさなど）
         </p>
         <div className={styles.formGroup}>
           <label htmlFor="name">お名前（任意）</label>

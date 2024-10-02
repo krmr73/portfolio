@@ -18,8 +18,6 @@ body {
 
   a {
     color: var(--text-color);
-    letter-spacing: 0.15em;
-    font-weight: 500;
     transition: color 0.5s;
     &:hover {
       color: var(--main-color);
@@ -44,5 +42,14 @@ body {
   p {
     font-size: 1rem;
     color: #555;
+  }
+
+  section {
+    background-color: #fff;
+    padding: 4rem;
+    border-radius: 10px;
+    max-width: 600px; /* セクションの最大幅を指定 */
+    width: 100%; /* セクションが親要素の幅に応じてサイズを変更 */
+    margin: 0 auto; /* セクションを中央に配置 */
   }
 }

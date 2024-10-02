@@ -4,10 +4,11 @@
   justify-content: flex-start; /* 左揃えにする */
 }
 
-.email {
+.text {
   margin-left: 0.5rem;
   font-size: 1.1rem;
   align-items: center;
+  margin: 0.5rem 0;
 }
 
 .link {
@@ -34,10 +35,9 @@
 
 .form {
   margin-top: 2rem;
-  border: 1px solid #ddd;
   padding: 1.5rem 2rem;
   border-radius: 8px;
-  background-color: #fffffff3;
+  background-color: #a6b1a029;
 }
 
 .formGroup {
@@ -75,7 +75,7 @@
 .button {
   width: 100%;
   padding: 0.8rem;
-  background-color: #0e80cbea;
+  background-color: #83aa6efc;
   color: #fff;
   font-size: 1rem;
   border: none;
@@ -84,7 +84,7 @@
 }
 
 .button:hover {
-  background-color: #097ac5f9;
+  background-color: #83aa6ebf;
 }
 
 .status {
