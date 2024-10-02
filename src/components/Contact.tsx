@@ -14,14 +14,16 @@ const Contact = () => {
   });
   const [status, setStatus] = useState("");
 
-  const handleChange = (e) => {
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+  ) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    setStatus("Sending...");
+    setStatus("送信中...");
 
     const response = await fetch("/api/contact", {
       method: "POST",
@@ -33,9 +35,9 @@ const Contact = () => {
 
     if (response.ok) {
       setFormData({ name: "", email: "", message: "" });
-      setStatus("Message sent successfully!");
+      setStatus("ご意見ありがとうございました！");
     } else {
-      setStatus("Error sending message.");
+      setStatus("送信に失敗しました。もう一度お試しください。");
     }
   };
 
@@ -55,36 +57,40 @@ const Contact = () => {
           rel="noopener noreferrer"
         >
           <FaGithub className={styles.icon} />
-          <p>GitHub</p>
+          <p>krmr73</p>
         </a>
       </div>
 
       {/* 問い合わせフォーム */}
       <form className={styles.form} onSubmit={handleSubmit}>
+        <h3>Share Your Thoughts</h3>
+        <p className={styles.description}>
+          このポートフォリオに関するご意見やアドバイス等、いただけるとありがたいです。
+          （例：もっと知りたい情報・あったらいい機能・見にくい箇所など）
+        </p>
         <div className={styles.formGroup}>
-          <label htmlFor="name">Name</label>
+          <label htmlFor="name">お名前（任意）</label>
           <input
             type="text"
             id="name"
             name="name"
             value={formData.name}
             onChange={handleChange}
-            required
           />
         </div>
         <div className={styles.formGroup}>
-          <label htmlFor="email">Email</label>
+          <label htmlFor="email">メール（任意）</label>
           <input
             type="email"
             id="email"
             name="email"
             value={formData.email}
             onChange={handleChange}
-            required
+            placeholder="your-email@example.com"
           />
         </div>
         <div className={styles.formGroup}>
-          <label htmlFor="message">Message</label>
+          <label htmlFor="message">ご意見・アドバイス</label>
           <textarea
             id="message"
             name="message"
@@ -94,7 +100,7 @@ const Contact = () => {
           />
         </div>
         <button type="submit" className={styles.button}>
-          Send Message
+          送信する
         </button>
         {status && <p className={styles.status}>{status}</p>}
       </form>

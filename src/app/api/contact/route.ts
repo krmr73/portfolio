@@ -18,12 +18,12 @@ export async function POST(req: NextRequest) {
     const mailOptions = {
       from: email,
       to: process.env.EMAIL_TO, // 通知を受け取るメールアドレス
-      subject: `New Contact Form Submission from ${name}`,
-      text: `You have a new contact form submission from:
+      subject: `portfolioサイトにて、${name}からの問い合わせ・ご意見`,
+      text: `下記の内容の問い合わせ・ご意見がありました。
 
-      Name: ${name}
-      Email: ${email}
-      Message: ${message}`,
+      名前: ${name}
+      メール: ${email}
+      メッセージ: ${message}`,
     };
 
     // メールを送信
