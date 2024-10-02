@@ -4,7 +4,7 @@ import { useState } from "react";
 import { AiOutlineMail } from "react-icons/ai"; // メールアイコンをインポート
 import { FaGithub } from "react-icons/fa"; // GitHub アイコンをインポート
 
-import styles from "../styles/Contact.module.css";
+import styles from "../styles/Contact.module.scss";
 
 const Contact = () => {
   const [formData, setFormData] = useState({
