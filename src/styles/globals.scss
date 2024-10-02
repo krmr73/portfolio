@@ -19,6 +19,7 @@ body {
   a {
     color: var(--text-color);
     transition: color 0.5s;
+
     &:hover {
       color: var(--main-color);
     }
@@ -48,53 +49,65 @@ body {
     background-color: #fff;
     padding: 4rem;
     border-radius: 10px;
-    max-width: 600px; /* セクションの最大幅を指定 */
-    width: 100%; /* セクションが親要素の幅に応じてサイズを変更 */
-    margin: 0 auto; /* セクションを中央に配置 */
-  }
-}
-
-/* スマホ表示向けのスタイル調整 */
-@media (max-width: 768px) {
-  h1 {
-    font-size: 1.8rem;
+    max-width: 600px;
+    width: 100%;
+    margin: 0 auto;
   }
 
-  h2 {
-    font-size: 1.6rem;
+  /* タブレット向けのスタイル */
+  @media (max-width: 768px) {
+    body {
+      padding: 1rem;
+    }
+
+    h1 {
+      font-size: 1.8rem;
+    }
+
+    h2 {
+      font-size: 1.6rem;
+    }
+
+    h3 {
+      font-size: 1.2rem;
+    }
+
+    p {
+      font-size: 0.9rem;
+    }
+
+    section {
+      padding: 2rem;
+      max-width: 80%; /* 横幅をデバイスに合わせて柔軟に */
+    }
   }
 
-  h3 {
-    font-size: 1.2rem;
-  }
+  /* スマホ向けのスタイル */
+  @media (max-width: 480px) {
+    body {
+      padding: 0.5rem;
+    }
 
-  p {
-    font-size: 0.9rem;
-  }
+    h1 {
+      font-size: 1.6rem;
+    }
 
-  section {
-    padding: 2rem; /* モバイルでのパディングを小さく */
-  }
-}
+    h2 {
+      font-size: 1.4rem;
+    }
 
-@media (max-width: 480px) {
-  h1 {
-    font-size: 1.6rem;
-  }
+    h3 {
+      font-size: 1rem;
+    }
 
-  h2 {
-    font-size: 1.4rem;
-  }
+    p {
+      font-size: 0.8rem;
+    }
 
-  h3 {
-    font-size: 1rem;
-  }
-
-  p {
-    font-size: 0.8rem;
-  }
-
-  section {
-    padding: 1.5rem; /* スマホ向けにさらにパディングを小さく */
+    section {
+      padding: 1rem;
+      max-width: 90%; /* スマホでは幅をデバイスの全幅に */
+      border-radius: 8px; /* スマホ向けに少し角を丸める */
+    }
   }
 }

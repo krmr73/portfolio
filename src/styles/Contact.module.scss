@@ -18,6 +18,7 @@
 .contactItem {
   @extend %flex-align-center;
   justify-content: flex-start; // 左揃えにする
+  padding-left: 1rem;
 }
 
 // Text

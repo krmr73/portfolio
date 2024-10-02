@@ -4,7 +4,6 @@
   align-items: center;
   justify-content: center;
   padding: 2rem;
-  background-color: #f0f0f0;
   min-height: 100vh;
   gap: 3rem;
 }
@@ -12,10 +11,7 @@
 /* 画面サイズが768px以下の場合のスタイル */
 @media (max-width: 768px) {
   .container {
-    padding-left: 0;  /* 左の余白をなくす */
-    padding-right: 1rem;  /* 右側に少し余白を残す場合 */
-    padding-top: 1rem;  /* 上部の余白を調整 */
-    padding-bottom: 1rem;  /* 下部の余白を調整 */
+    padding: 0; /* 余白をなくす */
   }
 }
 

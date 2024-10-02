@@ -20,3 +20,10 @@
 .aboutText {
   text-align: left;
 }
+
+/* さらに小さい画面、480px以下の場合 */
+@media (max-width: 480px) {
+  .profileContainer {
+    display: block;
+  }
+}
