@@ -1,0 +1,22 @@
+/* src/styles/About.module.css */
+
+.about {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.profileContainer {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.profileImage {
+  border-radius: 50%;
+  padding: 2rem;
+}
+
+.aboutText {
+  text-align: left;
+}

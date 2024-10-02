@@ -6,19 +6,32 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "run-p --continue-on-error --print-label lint:*",
+    "lint:eslint": "next lint",
+    "lint:prettier": "prettier --cache --check .",
+    "lint:secretlint": "secretlint --maskSecrets --secretlintignore .gitignore '**/*'",
+    "fix": "run-s --continue-on-error fix:*",
+    "fix:eslint": "next lint --fix",
+    "fix:prettier": "prettier --cache --write ."
   },
   "dependencies": {
+    "next": "14.2.5",
+    "nodemailer": "^6.9.15",
     "react": "^18",
     "react-dom": "^18",
     "next": "14.2.10"
   },
   "devDependencies": {
-    "typescript": "^5",
+    "@secretlint/secretlint-rule-preset-recommend": "^8.2.4",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
     "eslint": "^8",
-    "eslint-config-next": "14.2.5"
+    "eslint-config-next": "14.2.5",
+    "eslint-plugin-simple-import-sort": "^12.1.1",
+    "npm-run-all2": "^6.2.2",
+    "prettier": "^3.3.3",
+    "secretlint": "^8.2.4",
+    "typescript": "^5"
   }
 }

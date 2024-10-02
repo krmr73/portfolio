@@ -1,0 +1,53 @@
+/* src/styles/Skills.module.css */
+
+.skillsSection {
+  text-align: left;
+}
+
+.skillCategory {
+  margin-bottom: 2rem;
+}
+
+.skillsContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.skill {
+  display: flex;
+  align-items: center;
+}
+
+.skillName {
+  flex: 1;
+  font-size: 1.1rem;
+  color: #555;
+}
+
+.levelBar {
+  flex-grow: 1;
+  background-color: #e0e0e0;
+  border-radius: 5px;
+  overflow: hidden;
+  height: 10px;
+}
+.levelIndicator {
+  height: 100%;
+  border-radius: 5px;
+}
+
+.level1 {
+  width: 33%;
+  background-color: #ff9999;
+}
+
+.level2 {
+  width: 66%;
+  background-color: #ffd700;
+}
+
+.level3 {
+  width: 100%;
+  background-color: #4caf50;
+}
