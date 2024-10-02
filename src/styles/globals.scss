@@ -53,3 +53,48 @@ body {
     margin: 0 auto; /* セクションを中央に配置 */
   }
 }
+
+/* スマホ表示向けのスタイル調整 */
+@media (max-width: 768px) {
+  h1 {
+    font-size: 1.8rem;
+  }
+
+  h2 {
+    font-size: 1.6rem;
+  }
+
+  h3 {
+    font-size: 1.2rem;
+  }
+
+  p {
+    font-size: 0.9rem;
+  }
+
+  section {
+    padding: 2rem; /* モバイルでのパディングを小さく */
+  }
+}
+
+@media (max-width: 480px) {
+  h1 {
+    font-size: 1.6rem;
+  }
+
+  h2 {
+    font-size: 1.4rem;
+  }
+
+  h3 {
+    font-size: 1rem;
+  }
+
+  p {
+    font-size: 0.8rem;
+  }
+
+  section {
+    padding: 1.5rem; /* スマホ向けにさらにパディングを小さく */
+  }
+}
