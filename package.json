@@ -15,15 +15,16 @@
     "fix:prettier": "prettier --cache --write ."
   },
   "dependencies": {
-    "next": "14.2.5",
+    "next": "14.2.10",
     "nodemailer": "^6.9.15",
     "react": "^18",
     "react-dom": "^18",
-    "next": "14.2.10"
+    "react-icons": "^5.3.0"
   },
   "devDependencies": {
     "@secretlint/secretlint-rule-preset-recommend": "^8.2.4",
     "@types/node": "^20",
+    "@types/nodemailer": "^6.4.16",
     "@types/react": "^18",
     "@types/react-dom": "^18",
     "eslint": "^8",
