@@ -20,9 +20,10 @@ const worksData: Work[] = [
   {
     title: "社会的ネットワークを捉える数理モデル",
     period: "2023年",
-    image: "/images/favicon.png",
+    image: "/images/works/urn_model.png",
     techStack: ["Python", "Julia"],
-    description: "機械学習モデルを活用したデータ分析プロジェクト。",
+    description:
+      "社会的ネットワークにおける多様な相互作用を捉えるエージェントベースモデルに関する研究（チーム開発）",
     links: [
       {
         type: "論文",
@@ -40,6 +41,36 @@ const worksData: Work[] = [
         url: "https://github.com/tsukuba-websci/MPS-TOM-Urnmodel",
       },
     ],
+  },
+  {
+    title: "LLMを用いた画像アノテーション生成",
+    period: "2023年",
+    image: "/images/works/anotation.png",
+    techStack: ["Python", "OpenAI API"],
+    description: "LLMを用いた画像アノテーション生成（チーム開発）",
+    links: [
+      {
+        type: "論文",
+        title: "Can Generative Agents Predict Emotion?",
+        url: "https://arxiv.org/abs/2402.04232",
+      },
+    ],
+  },
+  {
+    title: "GenSQLを用いたテーブルデータ分析",
+    period: "2024年",
+    image: "/images/works/genSQL.png",
+    techStack: ["Python", "GenSQL"],
+    description: "GenSQLを適用し、テーブルデータの分析を行う",
+  },
+  {
+    title:
+      "AI Scientistのネットワーク生成モデル適用 における性能評価と改善提案",
+    period: "2024年",
+    image: "/images/works/ai_scientist.png",
+    techStack: ["Python", "OpenAI API"],
+    description:
+      "ネットワーク生成モデルの新しいアイデアの提案をAI Scientist によって行い、生成されるアイデアの品質を改善する",
   },
   {
     title: "Nanami Iwahashi Portfolio",
@@ -60,8 +91,8 @@ const Works: React.FC = () => {
       <div className={styles.grid}>
         {worksData.map((work, index) => (
           <div key={index} className={styles.card}>
-            <img src={work.image} alt={work.title} className={styles.image} />
             <h3 className={styles.cardTitle}>{work.title}</h3>
+            <img src={work.image} alt={work.title} className={styles.image} />
             <p className={styles.period}>{work.period}</p>
             <p className={styles.description}>{work.description}</p>
             <ul className={styles.techList}>
