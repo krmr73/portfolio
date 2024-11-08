@@ -2,7 +2,38 @@ import { NextRequest, NextResponse } from "next/server";
 import nodemailer from "nodemailer";
 import validator from "validator";
 
+const rateLimitMap = new Map();
+const RATE_LIMIT_WINDOW_MS = 15 * 60 * 1000; // 15分
+const MAX_REQUESTS = 5;
+
+function checkRateLimit(ip: string) {
+  const currentTime = Date.now();
+  const userRequests = rateLimitMap.get(ip) || [];
+
+  // 過去のリクエストでウィンドウ外のものをフィルタリング
+  const recentRequests = userRequests.filter(
+    (timestamp: number) => currentTime - timestamp < RATE_LIMIT_WINDOW_MS
+  );
+
+  // 現在のリクエストタイムスタンプを追加
+  recentRequests.push(currentTime);
+  rateLimitMap.set(ip, recentRequests);
+
+  // リクエスト数が上限を超えているか確認
+  return recentRequests.length <= MAX_REQUESTS;
+}
+
 export async function POST(req: NextRequest) {
+  const ip = req.headers.get("x-forwarded-for") || req.ip || "unknown";
+
+  // レートリミットをチェック
+  if (!checkRateLimit(ip)) {
+    return NextResponse.json(
+      { message: "Too many requests, please try again later." },
+      { status: 429 }
+    );
+  }
+
   try {
     const body = await req.json();
     const { name, email, message } = body;
