@@ -1,4 +1,6 @@
-import React from "react";
+"use client";
+
+import React, { useState } from "react";
 import styles from "../styles/Works.module.css";
 
 // Worksセクションで使用するプロジェクトデータの型
@@ -85,26 +87,59 @@ const worksData: Work[] = [
 
 // Worksコンポーネント
 const Works: React.FC = () => {
+  const [selectedWork, setSelectedWork] = useState<Work | null>(null);
+
+  const openModal = (work: Work) => {
+    setSelectedWork(work);
+  };
+
+  const closeModal = () => {
+    setSelectedWork(null);
+  };
+
   return (
     <section className={styles.section}>
       <h2 className={styles.title}>Works</h2>
       <div className={styles.grid}>
         {worksData.map((work, index) => (
-          <div key={index} className={styles.card}>
+          <div
+            key={index}
+            className={styles.card}
+            onClick={() => openModal(work)}
+          >
             <h3 className={styles.cardTitle}>{work.title}</h3>
             <img src={work.image} alt={work.title} className={styles.image} />
-            <p className={styles.period}>{work.period}</p>
-            <p className={styles.description}>{work.description}</p>
+          </div>
+        ))}
+      </div>
+
+      {/* モーダル */}
+      {selectedWork && (
+        <div className={styles.modalOverlay} onClick={closeModal}>
+          <div
+            className={styles.modalContent}
+            onClick={(e) => e.stopPropagation()}
+          >
+            <button className={styles.closeButton} onClick={closeModal}>
+              &times;
+            </button>
+            <h3>{selectedWork.title}</h3>
+            <img
+              src={selectedWork.image}
+              alt={selectedWork.title}
+              className={styles.image}
+            />
+            <p>{selectedWork.period}</p>
+            <p>{selectedWork.description}</p>
             <ul className={styles.techList}>
-              {work.techStack.map((tech, i) => (
+              {selectedWork.techStack.map((tech, i) => (
                 <li key={i} className={styles.techItem}>
                   {tech}
                 </li>
               ))}
             </ul>
-
             <div className={styles.links}>
-              {work.links?.map((link, i) => (
+              {selectedWork.links?.map((link, i) => (
                 <div key={i} className={styles.linkItem}>
                   <span className={styles.linkType}>{link.type}:</span>{" "}
                   <a
@@ -119,8 +154,8 @@ const Works: React.FC = () => {
               ))}
             </div>
           </div>
-        ))}
-      </div>
+        </div>
+      )}
     </section>
   );
 };
