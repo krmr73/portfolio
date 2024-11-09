@@ -1,7 +1,8 @@
 "use client";
 
-import React, { useState } from "react";
 import Image from "next/image";
+import React, { useState } from "react";
+
 import styles from "../styles/Works.module.css";
 
 // Worksセクションで使用するプロジェクトデータの型

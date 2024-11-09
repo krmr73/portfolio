@@ -12,7 +12,7 @@ function checkRateLimit(ip: string) {
 
   // 過去のリクエストでウィンドウ外のものをフィルタリング
   const recentRequests = userRequests.filter(
-    (timestamp: number) => currentTime - timestamp < RATE_LIMIT_WINDOW_MS
+    (timestamp: number) => currentTime - timestamp < RATE_LIMIT_WINDOW_MS,
   );
 
   // 現在のリクエストタイムスタンプを追加
@@ -30,7 +30,7 @@ export async function POST(req: NextRequest) {
   if (!checkRateLimit(ip)) {
     return NextResponse.json(
       { message: "Too many requests, please try again later." },
-      { status: 429 }
+      { status: 429 },
     );
   }
 
@@ -42,7 +42,7 @@ export async function POST(req: NextRequest) {
     if (email && !validator.isEmail(email)) {
       return NextResponse.json(
         { message: "Invalid email format" },
-        { status: 400 }
+        { status: 400 },
       );
     }
 
@@ -72,12 +72,12 @@ export async function POST(req: NextRequest) {
 
     return NextResponse.json(
       { message: "Email sent successfully" },
-      { status: 200 }
+      { status: 200 },
     );
   } catch (error) {
     return NextResponse.json(
       { message: "Error sending email", error },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }
