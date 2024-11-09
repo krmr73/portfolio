@@ -51,27 +51,54 @@
   margin-bottom: 1rem;
 }
 
+/* モーダルのオーバーレイ */
 .modalOverlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background-color: rgba(0, 0, 0, 0.5);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 1000;
-}
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    overflow-y: auto; /* スクロール対応 */
+  }
 
-.modalContent {
-  background-color: white;
-  padding: 2rem;
-  border-radius: 8px;
-  max-width: 600px;
-  width: 90%;
-  position: relative;
-}
+  /* モーダル全体のスタイル */
+  .modalContent {
+    background-color: #ffffff;
+    border-radius: 8px;
+    max-width: 600px;
+    width: 90%;
+    padding: 1.5rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    position: relative;
+    text-align: center;
+  }
+
+  /* 画像スタイル */
+  .modalImage {
+    border-radius: 8px;
+    margin-bottom: 1rem;
+  }
+
+  /* タイトル、期間、説明のスタイル */
+  .modalTitle {
+    font-size: 1.5rem;
+    margin: 0.5rem 0;
+  }
+
+  .modalPeriod {
+    color: #555;
+    margin-bottom: 1rem;
+  }
+
+  .modalDescription {
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+  }
 
 .closeButton {
   position: absolute;
@@ -87,34 +114,71 @@
   cursor: pointer;
 }
 
+/* 技術スタックリスト */
+/* Publishedセクション */
+.techSection {
+    margin-top: 1.5rem;
+    text-align: left;
+  }
+
+  .techSection h4 {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+  }
+
 .techList {
-  list-style-type: none;
-  padding: 0;
-}
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+    list-style: none;
+    padding: 0;
+  }
 
-.techItem {
-  display: inline-block;
-  background-color: #e0e0e0;
-  border-radius: 4px;
-  padding: 0.25rem 0.5rem;
-  margin-right: 0.5rem;
-}
+  .techItem {
+    background: #f0f0f0;
+    border-radius: 4px;
+    padding: 0.3rem 0.6rem;
+    font-size: 0.85rem;
+  }
 
-.linkItem {
-  margin-top: 0.5rem;
-}
+/* Publishedセクション */
+.publishedSection {
+    margin-top: 1.5rem;
+    text-align: left;
+  }
 
-.linkType {
-  font-weight: bold;
-  margin-right: 0.5rem;
-}
+  .publishedSection h4 {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+  }
 
-.link {
-  color: #0070f3;
-  text-decoration: none;
-  font-weight: bold;
-}
+  .publishedList {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
 
-.link:hover {
-  text-decoration: underline;
-}
+  .publishedList li {
+    margin-bottom: 0.5rem;
+  }
+
+  .link {
+    color: #333;
+    text-decoration: none;
+  }
+
+  .link:hover {
+    color: #0070f3;
+  }
+
+  /* GitHubアイコン */
+  .githubIcon {
+    color: #333;
+    margin-right: 0.5rem;
+    display: inline-flex;
+  }
+
+  .githubIcon:hover {
+    color: #0070f3;
+  }

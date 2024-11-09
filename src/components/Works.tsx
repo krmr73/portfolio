@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import React, { useState } from "react";
+import { FaGithub } from "react-icons/fa";
 
 import styles from "../styles/Works.module.css";
 
@@ -144,7 +145,6 @@ const WorkSection: React.FC<{
               src={work.image}
               alt={work.title}
               className={styles.image}
-              layout="intrinsic"
               width={1000}
               height={600}
               quality={90}
@@ -156,7 +156,6 @@ const WorkSection: React.FC<{
   );
 };
 
-// モーダルコンポーネント
 const WorkModal: React.FC<{ work: Work; onClose: () => void }> = ({
   work,
   onClose,
@@ -167,39 +166,68 @@ const WorkModal: React.FC<{ work: Work; onClose: () => void }> = ({
         <button className={styles.closeButton} onClick={onClose}>
           &times;
         </button>
-        <h3>{work.title}</h3>
+        {/* タイトル、期間、説明を順に表示 */}
+        <h3 className={styles.modalTitle}>{work.title}</h3>
         <Image
           src={work.image}
           alt={work.title}
           className={styles.image}
-          layout="intrinsic"
-          width={500}
-          height={300}
+          width={1000}
+          height={600}
           quality={90}
         />
-        <p>{work.period}</p>
-        <p>{work.description}</p>
-        <ul className={styles.techList}>
-          {work.techStack.map((tech, i) => (
-            <li key={i} className={styles.techItem}>
-              {tech}
-            </li>
-          ))}
-        </ul>
-        <div className={styles.links}>
-          {work.links?.map((link, i) => (
-            <div key={i} className={styles.linkItem}>
-              <span className={styles.linkType}>{link.type}:</span>{" "}
-              <a
-                href={link.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className={styles.link}
-              >
-                {link.title || link.type}
-              </a>
+        <p className={styles.modalPeriod}>{work.period}</p>
+        <p className={styles.modalDescription}>{work.description}</p>
+
+        {/* 論文がある場合の published セクション */}
+        {work.links?.some((link) => link.type === "論文") && (
+          <div className={styles.publishedSection}>
+            <h4>Published</h4>
+            <ul className={styles.publishedList}>
+              {work.links
+                .filter((link) => link.type === "論文")
+                .map((link, index) => (
+                  <li key={index}>
+                    <a
+                      href={link.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={styles.link}
+                    >
+                      {link.title || "View Paper"}
+                    </a>
+                  </li>
+                ))}
+            </ul>
+          </div>
+        )}
+
+        <div className={styles.techSection}>
+          <h4>Tech Stack</h4>
+          <ul className={styles.techList}>
+            {work.techStack.map((tech, i) => (
+              <li key={i} className={styles.techItem}>
+                {tech}
+              </li>
+            ))}
+
+            {/* GitHubリンクのアイコン表示 */}
+            <div className={styles.links}>
+              {work.links
+                ?.filter((link) => link.type === "GitHub")
+                .map((link, index) => (
+                  <a
+                    key={index}
+                    href={link.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={styles.githubIcon}
+                  >
+                    <FaGithub size={24} />
+                  </a>
+                ))}
             </div>
-          ))}
+          </ul>
         </div>
       </div>
     </div>
