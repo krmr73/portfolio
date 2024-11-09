@@ -11,6 +11,7 @@ type Work = {
   image: string;
   techStack: string[];
   description: string;
+  category: "research" | "other";
   links?: {
     type: "論文" | "GitHub" | "デモサイト";
     title?: string;
@@ -18,7 +19,6 @@ type Work = {
   }[]; // 複数のリンクを持てるように
 };
 
-// プロジェクトデータの例
 const worksData: Work[] = [
   {
     title: "社会的ネットワークを捉える数理モデル",
@@ -27,6 +27,7 @@ const worksData: Work[] = [
     techStack: ["Python", "Julia"],
     description:
       "社会的ネットワークにおける多様な相互作用を捉えるエージェントベースモデルに関する研究（チーム開発）",
+    category: "research",
     links: [
       {
         type: "論文",
@@ -51,6 +52,7 @@ const worksData: Work[] = [
     image: "/images/works/anotation.png",
     techStack: ["Python", "OpenAI API"],
     description: "LLMを用いた画像アノテーション生成（チーム開発）",
+    category: "research",
     links: [
       {
         type: "論文",
@@ -65,6 +67,7 @@ const worksData: Work[] = [
     image: "/images/works/genSQL.png",
     techStack: ["Python", "GenSQL"],
     description: "GenSQLを適用し、テーブルデータの分析を行う",
+    category: "research",
   },
   {
     title:
@@ -74,6 +77,7 @@ const worksData: Work[] = [
     techStack: ["Python", "OpenAI API"],
     description:
       "ネットワーク生成モデルの新しいアイデアの提案をAI Scientist によって行い、生成されるアイデアの品質を改善する",
+    category: "research",
   },
   {
     title: "Nanami Iwahashi Portfolio",
@@ -81,6 +85,7 @@ const worksData: Work[] = [
     image: "/images/works/portfolio.png",
     techStack: ["React", "Next.js", "TypeScript", "HTML/CSS"],
     description: "このポートフォリオサイト。",
+    category: "other",
     links: [{ type: "GitHub", url: "https://github.com/krmr73/portfolio" }],
   },
   // 他のプロジェクトを追加
@@ -90,23 +95,48 @@ const worksData: Work[] = [
 const Works: React.FC = () => {
   const [selectedWork, setSelectedWork] = useState<Work | null>(null);
 
-  const openModal = (work: Work) => {
-    setSelectedWork(work);
-  };
-
-  const closeModal = () => {
-    setSelectedWork(null);
-  };
-
   return (
     <section className={styles.section}>
       <h2 className={styles.title}>Works</h2>
+      <WorkSection
+        title="Research"
+        works={worksData}
+        category="research"
+        onSelectWork={setSelectedWork}
+      />
+      <WorkSection
+        title="Others"
+        works={worksData}
+        category="other"
+        onSelectWork={setSelectedWork}
+      />
+      {selectedWork && (
+        <WorkModal work={selectedWork} onClose={() => setSelectedWork(null)} />
+      )}
+    </section>
+  );
+};
+
+export default Works;
+
+// Workセクション
+const WorkSection: React.FC<{
+  title: string;
+  works: Work[];
+  category: Work["category"];
+  onSelectWork: (work: Work) => void;
+}> = ({ title, works, category, onSelectWork }) => {
+  const filteredWorks = works.filter((work) => work.category === category);
+
+  return (
+    <>
+      <h3 className={styles.subtitle}>{title}</h3>
       <div className={styles.grid}>
-        {worksData.map((work, index) => (
+        {filteredWorks.map((work, index) => (
           <div
             key={index}
             className={styles.card}
-            onClick={() => openModal(work)}
+            onClick={() => onSelectWork(work)}
           >
             <h3 className={styles.cardTitle}>{work.title}</h3>
             <Image
@@ -114,61 +144,63 @@ const Works: React.FC = () => {
               alt={work.title}
               className={styles.image}
               layout="intrinsic"
-              width={500}
-              height={300}
+              width={1000}
+              height={600}
+              quality={90}
             />
           </div>
         ))}
       </div>
-
-      {/* モーダル */}
-      {selectedWork && (
-        <div className={styles.modalOverlay} onClick={closeModal}>
-          <div
-            className={styles.modalContent}
-            onClick={(e) => e.stopPropagation()}
-          >
-            <button className={styles.closeButton} onClick={closeModal}>
-              &times;
-            </button>
-            <h3>{selectedWork.title}</h3>
-            <Image
-              src={selectedWork.image}
-              alt={selectedWork.title}
-              className={styles.image}
-              layout="intrinsic"
-              width={500}
-              height={300}
-            />
-            <p>{selectedWork.period}</p>
-            <p>{selectedWork.description}</p>
-            <ul className={styles.techList}>
-              {selectedWork.techStack.map((tech, i) => (
-                <li key={i} className={styles.techItem}>
-                  {tech}
-                </li>
-              ))}
-            </ul>
-            <div className={styles.links}>
-              {selectedWork.links?.map((link, i) => (
-                <div key={i} className={styles.linkItem}>
-                  <span className={styles.linkType}>{link.type}:</span>{" "}
-                  <a
-                    href={link.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className={styles.link}
-                  >
-                    {link.title || link.type}
-                  </a>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      )}
-    </section>
+    </>
   );
 };
 
-export default Works;
+// モーダルコンポーネント
+const WorkModal: React.FC<{ work: Work; onClose: () => void }> = ({
+  work,
+  onClose,
+}) => {
+  return (
+    <div className={styles.modalOverlay} onClick={onClose}>
+      <div className={styles.modalContent} onClick={(e) => e.stopPropagation()}>
+        <button className={styles.closeButton} onClick={onClose}>
+          &times;
+        </button>
+        <h3>{work.title}</h3>
+        <Image
+          src={work.image}
+          alt={work.title}
+          className={styles.image}
+          layout="intrinsic"
+          width={500}
+          height={300}
+          quality={90}
+        />
+        <p>{work.period}</p>
+        <p>{work.description}</p>
+        <ul className={styles.techList}>
+          {work.techStack.map((tech, i) => (
+            <li key={i} className={styles.techItem}>
+              {tech}
+            </li>
+          ))}
+        </ul>
+        <div className={styles.links}>
+          {work.links?.map((link, i) => (
+            <div key={i} className={styles.linkItem}>
+              <span className={styles.linkType}>{link.type}:</span>{" "}
+              <a
+                href={link.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={styles.link}
+              >
+                {link.title || link.type}
+              </a>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+};
