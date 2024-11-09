@@ -4,9 +4,14 @@ import Image from "next/image";
 import React, { useState } from "react";
 import { FaGithub } from "react-icons/fa";
 
-import styles from "../styles/Works.module.css";
+import styles from "../styles/Works.module.scss";
 
-// Worksセクションで使用するプロジェクトデータの型
+type Link = {
+  type: "論文" | "GitHub" | "デモサイト";
+  title?: string;
+  url: string;
+};
+
 type Work = {
   title: string;
   period: string;
@@ -14,11 +19,7 @@ type Work = {
   techStack: string[];
   description: string;
   category: "research" | "other";
-  links?: {
-    type: "論文" | "GitHub" | "デモサイト";
-    title?: string;
-    url: string;
-  }[]; // 複数のリンクを持てるように
+  links?: Link[];
 };
 
 const worksData: Work[] = [
@@ -72,8 +73,7 @@ const worksData: Work[] = [
     category: "research",
   },
   {
-    title:
-      "AI Scientistのネットワーク生成モデル適用 における性能評価と改善提案",
+    title: "AI Scientistで生成されるアイディア改善",
     period: "2024年",
     image: "/images/works/ai_scientist.png",
     techStack: ["Python", "OpenAI API"],
@@ -90,10 +90,8 @@ const worksData: Work[] = [
     category: "other",
     links: [{ type: "GitHub", url: "https://github.com/krmr73/portfolio" }],
   },
-  // 他のプロジェクトを追加
 ];
 
-// Worksコンポーネント
 const Works: React.FC = () => {
   const [selectedWork, setSelectedWork] = useState<Work | null>(null);
 
@@ -119,9 +117,6 @@ const Works: React.FC = () => {
   );
 };
 
-export default Works;
-
-// Workセクション
 const WorkSection: React.FC<{
   title: string;
   works: Work[];
@@ -160,18 +155,21 @@ const WorkModal: React.FC<{ work: Work; onClose: () => void }> = ({
   work,
   onClose,
 }) => {
+  const paperLinks = work.links?.filter((link) => link.type === "論文") || [];
+  const githubLink = work.links?.find((link) => link.type === "GitHub");
+
   return (
     <div className={styles.modalOverlay} onClick={onClose}>
       <div className={styles.modalContent} onClick={(e) => e.stopPropagation()}>
         <button className={styles.closeButton} onClick={onClose}>
           &times;
         </button>
-        {/* タイトル、期間、説明を順に表示 */}
+
         <h3 className={styles.modalTitle}>{work.title}</h3>
         <Image
           src={work.image}
           alt={work.title}
-          className={styles.image}
+          className={styles.modalImage}
           width={1000}
           height={600}
           quality={90}
@@ -179,25 +177,22 @@ const WorkModal: React.FC<{ work: Work; onClose: () => void }> = ({
         <p className={styles.modalPeriod}>{work.period}</p>
         <p className={styles.modalDescription}>{work.description}</p>
 
-        {/* 論文がある場合の published セクション */}
-        {work.links?.some((link) => link.type === "論文") && (
+        {paperLinks.length > 0 && (
           <div className={styles.publishedSection}>
             <h4>Published</h4>
             <ul className={styles.publishedList}>
-              {work.links
-                .filter((link) => link.type === "論文")
-                .map((link, index) => (
-                  <li key={index}>
-                    <a
-                      href={link.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className={styles.link}
-                    >
-                      {link.title || "View Paper"}
-                    </a>
-                  </li>
-                ))}
+              {paperLinks.map((link, index) => (
+                <li key={index}>
+                  <a
+                    href={link.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={styles.link}
+                  >
+                    {link.title || "View Paper"}
+                  </a>
+                </li>
+              ))}
             </ul>
           </div>
         )}
@@ -210,26 +205,23 @@ const WorkModal: React.FC<{ work: Work; onClose: () => void }> = ({
                 {tech}
               </li>
             ))}
-
-            {/* GitHubリンクのアイコン表示 */}
-            <div className={styles.links}>
-              {work.links
-                ?.filter((link) => link.type === "GitHub")
-                .map((link, index) => (
-                  <a
-                    key={index}
-                    href={link.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className={styles.githubIcon}
-                  >
-                    <FaGithub size={24} />
-                  </a>
-                ))}
-            </div>
+            {githubLink && (
+              <li className={styles.techItem}>
+                <a
+                  href={githubLink.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={styles.githubIcon}
+                >
+                  <FaGithub size={24} />
+                </a>
+              </li>
+            )}
           </ul>
         </div>
       </div>
     </div>
   );
 };
+
+export default Works;

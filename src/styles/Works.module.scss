@@ -1,0 +1,183 @@
+// 共通スタイル
+.section {
+  text-align: center;
+}
+
+.title {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.subtitle {
+  font-size: 1.5rem;
+  margin: 1.5rem 0 1rem;
+}
+
+// カードグリッド
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+}
+
+// カードのスタイル
+.card {
+  padding: 1rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background-color: #ffffff;
+  transition: transform 0.2s;
+  text-align: left;
+  cursor: pointer;
+
+  &:hover {
+    transform: translateY(-5px);
+  }
+
+  .image {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 0.5rem;
+  }
+
+  .cardTitle {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin: 0.5rem;
+    text-align: center;
+  }
+}
+
+// モーダルスタイル
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow-y: auto;
+}
+
+.modalContent {
+  background-color: #ffffff;
+  border-radius: 8px;
+  max-width: 650px;
+  width: 90%;
+  padding: 1rem 3rem;
+  position: relative;
+  text-align: center;
+
+  .closeButton {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: #555;
+    cursor: pointer;
+  }
+
+  .modalTitle {
+    font-size: 1.5rem;
+    margin: 2rem 0;
+    color: #111;
+  }
+
+  .modalPeriod {
+    color: #555;
+    margin-bottom: 1rem;
+  }
+
+  .modalDescription {
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+  }
+
+  .modalImage {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 0.5rem;
+  }
+}
+
+// Publishedセクション
+.publishedSection {
+  margin-top: 1.5rem;
+  text-align: left;
+
+  h4 {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .publishedList {
+    list-style: none;
+    margin: 0;
+    padding-left: 1rem;
+
+    li {
+      margin-bottom: 0.5rem;
+
+      .link {
+        color: #0070f3; // デフォルトのリンクカラーを青色に
+        text-decoration: underline; // 下線を追加
+        font-weight: 500; // 文字の太さを少し増す
+
+        &:hover {
+          color: #005bb5; // ホバー時に色を少し濃く
+          text-decoration: none; // ホバー時に下線を消す
+        }
+      }
+    }
+  }
+}
+
+// 技術スタックセクション
+.techSection {
+  margin-top: 1.5rem;
+  text-align: left;
+
+  h4 {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .techList {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+    list-style: none;
+    padding-left: 1rem;
+
+    .techItem {
+      background: #f0f0f0;
+      border-radius: 4px;
+      padding: 0.3rem 0.6rem;
+      font-size: 0.85rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+
+    .githubIcon {
+      color: #333;
+      display: inline-flex;
+      font-size: 1.5rem;
+      padding: 0; // 囲いをなくす
+
+      &:hover {
+        color: #0070f3;
+        transform: scale(1.1); // 少し大きくして視認性を高める
+      }
+    }
+  }
+}
