@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
+import Image from "next/image";
 import styles from "../styles/Works.module.css";
 
 // Worksセクションで使用するプロジェクトデータの型
@@ -108,7 +109,14 @@ const Works: React.FC = () => {
             onClick={() => openModal(work)}
           >
             <h3 className={styles.cardTitle}>{work.title}</h3>
-            <img src={work.image} alt={work.title} className={styles.image} />
+            <Image
+              src={work.image}
+              alt={work.title}
+              className={styles.image}
+              layout="intrinsic"
+              width={500}
+              height={300}
+            />
           </div>
         ))}
       </div>
@@ -124,10 +132,13 @@ const Works: React.FC = () => {
               &times;
             </button>
             <h3>{selectedWork.title}</h3>
-            <img
+            <Image
               src={selectedWork.image}
               alt={selectedWork.title}
               className={styles.image}
+              layout="intrinsic"
+              width={500}
+              height={300}
             />
             <p>{selectedWork.period}</p>
             <p>{selectedWork.description}</p>
