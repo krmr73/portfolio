@@ -10,20 +10,10 @@
   text-align: left;
 }
 
-// 区切り線のスタイル
-.sectionDivider {
-  border: none;
-  border-top: 3px solid #e0e0e0;
-  margin: 4rem 0;
-  width: 100%;
-  margin-left: auto;
-  margin-right: auto;
-}
-
 // カードグリッド
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
   gap: 1.5rem;
 }
 

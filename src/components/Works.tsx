@@ -109,8 +109,6 @@ const Works: React.FC = () => {
         onSelectWork={setSelectedWork}
       />
 
-      <hr className={styles.sectionDivider} />
-
       <WorkSection
         title="Others"
         works={worksData}
