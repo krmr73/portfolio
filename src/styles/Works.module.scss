@@ -1,8 +1,4 @@
 // 共通スタイル
-.section {
-  text-align: center;
-}
-
 .title {
   font-size: 2rem;
   margin-bottom: 1rem;
@@ -11,6 +7,17 @@
 .subtitle {
   font-size: 1.5rem;
   margin: 1.5rem 0 1rem;
+  text-align: left;
+}
+
+// 区切り線のスタイル
+.sectionDivider {
+  border: none;
+  border-top: 3px solid #e0e0e0;
+  margin: 4rem 0;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 // カードグリッド
@@ -24,14 +31,17 @@
 .card {
   padding: 1rem;
   border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   background-color: #ffffff;
-  transition: transform 0.2s;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
   text-align: left;
   cursor: pointer;
 
   &:hover {
-    transform: translateY(-5px);
+    transform: scale(1.05);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
   }
 
   .image {
@@ -83,9 +93,19 @@
     cursor: pointer;
   }
 
+  .period {
+    position: absolute;
+    font-weight: 900;
+    font-size: 1rem;
+    top: 1rem;
+    left: 1.5rem;
+    color: #6f9582fc;
+    padding-top: 0.3rem;
+  }
+
   .modalTitle {
     font-size: 1.5rem;
-    margin: 2rem 0;
+    margin-top: 2rem;
     color: #111;
   }
 
@@ -103,7 +123,7 @@
     width: 100%;
     height: auto;
     border-radius: 8px;
-    margin-bottom: 0.5rem;
+    margin: 1rem;
   }
 }
 
@@ -126,13 +146,12 @@
       margin-bottom: 0.5rem;
 
       .link {
-        color: #0070f3; // デフォルトのリンクカラーを青色に
-        text-decoration: underline; // 下線を追加
-        font-weight: 500; // 文字の太さを少し増す
+        color: #0e498dc4;
+        font-weight: 500;
 
         &:hover {
-          color: #005bb5; // ホバー時に色を少し濃く
-          text-decoration: none; // ホバー時に下線を消す
+          color: #3486e3c4;
+          text-decoration: none;
         }
       }
     }
@@ -169,14 +188,14 @@
     }
 
     .githubIcon {
-      color: #333;
+      color: #0e498dc4;
       display: inline-flex;
       font-size: 1.5rem;
-      padding: 0; // 囲いをなくす
+      padding: 0;
 
       &:hover {
-        color: #0070f3;
-        transform: scale(1.1); // 少し大きくして視認性を高める
+        color: #3486e3c4;
+        transform: scale(1.2);
       }
     }
   }

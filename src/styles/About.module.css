@@ -17,10 +17,6 @@
   padding: 2rem;
 }
 
-.aboutText {
-  text-align: left;
-}
-
 /* 480px以下の場合 */
 @media (max-width: 480px) {
   .profileContainer {

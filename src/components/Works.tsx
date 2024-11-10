@@ -3,6 +3,7 @@
 import Image from "next/image";
 import React, { useState } from "react";
 import { FaGithub } from "react-icons/fa";
+import Linkify from "react-linkify";
 
 import styles from "../styles/Works.module.scss";
 
@@ -25,11 +26,11 @@ type Work = {
 const worksData: Work[] = [
   {
     title: "社会的ネットワークを捉える数理モデル",
-    period: "2023年",
+    period: "In 2023",
     image: "/images/works/urn_model.png",
     techStack: ["Python", "Julia"],
     description:
-      "社会的ネットワークにおける多様な相互作用を捉えるエージェントベースモデルに関する研究（チーム開発）",
+      "社会的ネットワークにおける多様な相互作用を捉えるエージェントベースモデルに関する研究を行っていました。（チーム開発）",
     category: "research",
     links: [
       {
@@ -50,11 +51,12 @@ const worksData: Work[] = [
     ],
   },
   {
-    title: "LLMを用いた画像アノテーション生成",
-    period: "2023年",
+    title: "コンテキストを意識した画像アノテーション生成",
+    period: "In 2023",
     image: "/images/works/anotation.png",
     techStack: ["Python", "OpenAI API"],
-    description: "LLMを用いた画像アノテーション生成（チーム開発）",
+    description:
+      "LLMを用いて、コンテキストを意識した画像アノテーション生成に関する研究を行っていました。それに付随した研究として、コンテキストを加味してLLMエージェントの感情がどう変化するかを分析する研究を論文として投稿しました。（チーム開発）",
     category: "research",
     links: [
       {
@@ -66,27 +68,29 @@ const worksData: Work[] = [
   },
   {
     title: "GenSQLを用いたテーブルデータ分析",
-    period: "2024年",
+    period: "In Progress",
     image: "/images/works/genSQL.png",
     techStack: ["Python", "GenSQL"],
-    description: "GenSQLを適用し、テーブルデータの分析を行う",
+    description:
+      "MITの研究者が発表した統計解析を行うための確率プログラミングシステムGenSQL(https://dspace.mit.edu/handle/1721.1/155514)を適用し、テーブルデータの分析を行っています。",
     category: "research",
   },
   {
-    title: "AI Scientistで生成されるアイディア改善",
-    period: "2024年",
+    title: "AI Scientistのアイデア改善",
+    period: "In Progress",
     image: "/images/works/ai_scientist.png",
     techStack: ["Python", "OpenAI API"],
     description:
-      "ネットワーク生成モデルの新しいアイデアの提案をAI Scientist によって行い、生成されるアイデアの品質を改善する",
+      "ネットワーク生成モデルの新しいアイデアの提案をAI Scientist(https://sakana.ai/ai-scientist/)をベースにして行い、生成されるアイデアの品質を改善を目指しています。",
     category: "research",
   },
   {
     title: "Nanami Iwahashi Portfolio",
-    period: "2024年",
+    period: "In 2024",
     image: "/images/works/portfolio.png",
     techStack: ["React", "Next.js", "TypeScript", "HTML/CSS"],
-    description: "このポートフォリオサイト。",
+    description:
+      "このポートフォリオサイトのことで、作成したきっかけはフロントエンドを触りたかったためです。就活で見せることを意識し、画面遷移が少なく忙しい方が時間をかけずに情報を得られるように設計しました。",
     category: "other",
     links: [{ type: "GitHub", url: "https://github.com/krmr73/portfolio" }],
   },
@@ -104,6 +108,9 @@ const Works: React.FC = () => {
         category="research"
         onSelectWork={setSelectedWork}
       />
+
+      <hr className={styles.sectionDivider} />
+
       <WorkSection
         title="Others"
         works={worksData}
@@ -158,12 +165,20 @@ const WorkModal: React.FC<{ work: Work; onClose: () => void }> = ({
   const paperLinks = work.links?.filter((link) => link.type === "論文") || [];
   const githubLink = work.links?.find((link) => link.type === "GitHub");
 
+  const componentDecorator = (href: string, text: string, key: number) => (
+    <a href={href} key={key} target="_blank" rel="noopener noreferrer">
+      {text}
+    </a>
+  );
+
   return (
     <div className={styles.modalOverlay} onClick={onClose}>
       <div className={styles.modalContent} onClick={(e) => e.stopPropagation()}>
         <button className={styles.closeButton} onClick={onClose}>
           &times;
         </button>
+
+        <span className={styles.period}>{work.period}</span>
 
         <h3 className={styles.modalTitle}>{work.title}</h3>
         <Image
@@ -174,8 +189,12 @@ const WorkModal: React.FC<{ work: Work; onClose: () => void }> = ({
           height={600}
           quality={90}
         />
-        <p className={styles.modalPeriod}>{work.period}</p>
-        <p className={styles.modalDescription}>{work.description}</p>
+
+        <p>
+          <Linkify componentDecorator={componentDecorator}>
+            {work.description}
+          </Linkify>
+        </p>
 
         {paperLinks.length > 0 && (
           <div className={styles.publishedSection}>
