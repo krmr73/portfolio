@@ -9,46 +9,77 @@
 }
 
 .skillsContainer {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
   gap: 1rem;
-  padding-left: 1rem;
+  padding-left: 0;
 }
 
 .skill {
   display: flex;
-  align-items: center;
+  flex-direction: column;
+  border-radius: 8px;
+  padding: 1rem;
+  background-color: #f9f9f9;
 }
 
 .skillName {
-  flex: 1;
   font-size: 1.1rem;
+  font-weight: 600;
   color: #555;
+  margin-bottom: 0rem;
+}
+
+.skillDescription {
+  font-size: 0.85rem;
+  color: #777;
+  margin-bottom: 0.5rem;
+  line-height: 1.5;
+}
+
+.qualificationContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-left: 1rem;
 }
 
 .levelBar {
-  flex-grow: 1;
+  width: 100%;
   background-color: #e0e0e0;
   border-radius: 5px;
   overflow: hidden;
-  height: 10px;
+  height: 8px;
 }
+
 .levelIndicator {
   height: 100%;
   border-radius: 5px;
+  transition: width 0.3s ease;
 }
 
+/* 5段階のスキルレベルのカラー */
 .level1 {
-  width: 33%;
-  background-color: #ff9999;
+  width: 20%;
+  background-color: #caa9e7;
 }
 
 .level2 {
-  width: 66%;
-  background-color: #ffd700;
+  width: 40%;
+  background-color: #eca2a9;
 }
 
 .level3 {
+  width: 60%;
+  background-color: #f5c06c;
+}
+
+.level4 {
+  width: 80%;
+  background-color: #8acb8d;
+}
+
+.level5 {
   width: 100%;
-  background-color: #4caf50;
+  background-color: #91b6ee;
 }
