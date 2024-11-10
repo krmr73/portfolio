@@ -8,7 +8,7 @@ const skillCategories = [
         name: "Python",
         level: 4,
         description:
-          "研究に利用（数理モデル・データ分析・可視化）、授業（強化学習）",
+          "研究に利用（数理モデル・データ分析・可視化），授業（強化学習）",
       },
       { name: "C", level: 3, description: "Arduinoの電子工作に利用" },
       { name: "C++", level: 2, description: "競技プログラミングの授業で利用" },
@@ -43,12 +43,12 @@ const skillCategories = [
       {
         name: "GCP",
         level: 1,
-        description: "研究でCompute Engine, Cloud Storageを利用",
+        description: "研究でCompute Engine，Cloud Storageを利用",
       },
       {
         name: "AWS",
         level: 1,
-        description: "サマーインターンでサーバ構築、データ分析を少し体験",
+        description: "サマーインターンでサーバ構築，データ分析を少し体験",
       },
     ],
   },

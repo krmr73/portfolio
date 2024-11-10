@@ -81,7 +81,7 @@ const worksData: Work[] = [
     image: "/images/works/ai_scientist.png",
     techStack: ["Python", "OpenAI API"],
     description:
-      "ネットワーク生成モデルの新しいアイデアの提案をAI Scientist(https://sakana.ai/ai-scientist/)をベースにして行い、生成されるアイデアの品質を改善を目指しています。",
+      "ネットワーク生成モデルの新しいアイデアの提案をAI Scientist(https://sakana.ai/ai-scientist/)をベースとして、自動的なアイデア生成の品質改善を目指しています。",
     category: "research",
   },
   {
