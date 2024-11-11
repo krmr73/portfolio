@@ -13,7 +13,7 @@ const skillCategories = [
       { name: "C", level: 3, description: "Arduinoの電子工作に利用" },
       { name: "C++", level: 2, description: "競技プログラミングの授業で利用" },
       { name: "Java", level: 2, description: "授業でゲームAIの作成に利用" },
-      { name: "JavaScript", level: 2, description: "Webアプリの作成に利用" },
+      { name: "JavaScript", level: 2, description: "webアプリの作成に利用" },
       {
         name: "TypeScript",
         level: 2,
@@ -30,7 +30,7 @@ const skillCategories = [
         level: 2,
         description: "webアプリの作成に利用（サマーインターン・本サイト）",
       },
-      { name: "HTML/CSS", level: 2, description: "Webアプリの作成に利用" },
+      { name: "HTML/CSS", level: 2, description: "webアプリの作成に利用" },
     ],
   },
   {
